@@ -1,4 +1,4 @@
-const BuyerModel = require("../model/Add_Buyer_model");
+const BuyerModel = require("../../model/Add_Buyer_model");
 
 exports.addBuyer = async (req, res) => {
     try {

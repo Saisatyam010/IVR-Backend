@@ -1,6 +1,6 @@
-const { JWT_SECRET_KEY } = require("../constent/Constent");
-const AdminLoginModel = require("../model/adminLoginPart/Admin_Login_modal")
-const { isValidPassword } = require("../utils/Utils")
+const { JWT_SECRET_KEY } = require("../../constent/Constent");
+const AdminLoginModel = require("../../model/adminLoginPart/Admin_Login_modal")
+const { isValidPassword } = require("../../utils/Utils")
 const twt = require("jsonwebtoken")
 // const {JWT_SECRET_KEY} = require("../constent/Constent")
 
