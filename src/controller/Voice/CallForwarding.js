@@ -7,15 +7,17 @@ exports.welcomeCall= (req, res) => {
     return res.redirect('/auth/call-senators/')
   }
 exports.callSenator=(req, res)=> {
-    const response = new twilio.twiml.VoiceResponse();
-    response.say("Connecting you to " + "Ashok " + ". ");
-    response.dial(+919319344723, {
-      action: '/auth/call-status',
-      method:'POST',
-      
+    const twiml = new twilio.twiml.VoiceResponse();
+    twiml.dial(+919319344723,{
+        action:'/auth/call-status',
+        
     });
+    twiml.say('goodbye')
+    twiml.asnwerOnBridge=true
     res.set('Content-Type', 'text/xml');
-    return res.send(response.toString());
+   
+    res.send(twiml.toString());
+
   }
   
   
@@ -36,22 +38,25 @@ exports.fallBackNumber= (req, res) => {
 
 
 exports.goodBye= (req, res) => {
-    const response = new twilio.twiml.VoiceResponse();
-    console.log(response + " " + " good byy have a save day bhai");
-    response.say("Thank you for using Twrilo! " +
+    const twiml = new twilio.twiml.VoiceResponse();
+    console.log(twiml + " " + " good byy have a save day bhai");
+    twiml.say("Thank you for using Twrilo! " +
       "Your voice makes a difference. Goodbye.");
-    response.hangup();
+      twiml.hangup();
     res.set('Content-Type', 'text/xml');
-    res.send(response.toString());
+    res.send(twiml.toString());
   }
 
 exports.callStatus= (req, res) => {
     const twiml = new twilio.twiml.VoiceResponse();
-    const callStatus=req.body.CallStatus
-    console.log(callStatus+"call status")
-    if (callStatus === 'in-progress') {
-      const secondNumber = '+919315890034'; // Replace with the second forwarding number
-      twiml.dial(secondNumber);
+    const callStatus=req.body.DialCallStatus
+    twiml.say('please wait all lines are bisi')
+    if (callStatus === 'no-answer' || callStatus === 'busy') {
+      const secondNumber = '+919315890034';  
+      twiml.dial(secondNumber,{
+        action: '/auth/goodbye',
+        method:'POST',
+      });
     }
   
     res.type('text/xml');
