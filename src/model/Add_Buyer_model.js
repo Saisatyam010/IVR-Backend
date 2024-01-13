@@ -15,8 +15,9 @@ const buyerSchema = new mongoose.Schema({
     live_call_limit:{type:String},
     daily_call_limit:{type:String},
     monthly_call_limit:{type:String},
-    buyer_status:{type:String},
+    buyer_status:{type:Boolean},
     active_hours:{type:String},
+    priority:{type:Number}
 
 })
 

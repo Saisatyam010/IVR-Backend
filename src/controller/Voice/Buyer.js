@@ -16,6 +16,7 @@ exports.addBuyer = async (req, res) => {
             monthly_call_limit: data.monthly_call_limit,
             buyer_status: data.buyer_status,
             active_hours: data.active_hours,
+            priority:data.priority
             // userId:req.user._id
 
         }

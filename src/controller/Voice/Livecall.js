@@ -10,7 +10,6 @@ exports.liveCallData = async (req, res) => {
       const calls = await client.calls.list({
         status: 'in-progress',
       });
-      console.log({calls:calls});
       if(calls.length>0){
         res.json({calls:calls});
       }else{
