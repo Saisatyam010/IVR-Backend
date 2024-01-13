@@ -1,9 +1,9 @@
 require('dotenv').config()
-const accountSid = process.env.accountSid;
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.authToken ;
 
 
-const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(TWILIO_ACCOUNT_SID, authToken);
 
 exports.liveCallData = async (req, res) => {
     try {

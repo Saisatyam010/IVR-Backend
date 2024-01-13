@@ -1,13 +1,13 @@
 const BlockModel = require("../model/Blockcall");
 
-const accountSid = process.env.toPhoneNumber; 
+const TWILIO_ACCOUNT_SID = process.env.toPhoneNumber; 
 
 exports.addBlockNumber = async (req, res) => {
     try {
         const data = req.body
 
         const blockData = {
-            did:accountSid,
+            did:TWILIO_ACCOUNT_SID,
             customer_number: data.customer_number,
            
             

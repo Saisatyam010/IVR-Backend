@@ -5,9 +5,9 @@ const twilio = require('twilio');
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const accountSid = process.env.accountSid;
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.authToken ;
-const client = twilio(accountSid, authToken);
+const client = twilio(TWILIO_ACCOUNT_SID, authToken);
 
 exports.callVoise =  (req, res) => {
     const conferenceName = "Ashok";
