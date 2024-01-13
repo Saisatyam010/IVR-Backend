@@ -3,12 +3,11 @@ const express = require('express');
 const ivrRoute = express.Router()
 
 
-const { welcomeCall, callSenator, fallBackNumber, goodBye, callStatus, incomingCall, handleForwardCall } = require('../controller/Voice/CallForwarding');
+const { callSenator, fallBackNumber, goodBye, callStatus, incomingCall, handleForwardCall } = require('../controller/Voice/CallForwarding');
 const { liveCallData } = require('../controller/Voice/Livecall');
 const { addBuyer, getAllBuyer } = require('../controller/Voice/Buyer');
 const { getCallHistory } = require('../controller/Voice/CallHistory');
 const { addBlockNumber, getBlockNumber, deleteBlockNumber } = require('../controller/blockCall');
-const { callVoise, callWisper } = require('../controller/Voice/CallBearging');
 const { getCallRecordings, getAllCallRecordings } = require('../controller/callRecoding');
 // admin login
 
