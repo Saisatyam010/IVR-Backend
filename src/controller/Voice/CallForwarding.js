@@ -1,10 +1,7 @@
 const twilio = require("twilio");
 const BuyerModel = require("../../model/Add_Buyer_model");
 
-const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
-const authToken = process.env.authToken;
 
-const client = require('twilio')(TWILIO_ACCOUNT_SID, authToken);
 let forwardCallers=[]
 exports.incomingCall = async (req, res) => {
   const twiml = new twilio.twiml.VoiceResponse();
