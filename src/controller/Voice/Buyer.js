@@ -159,3 +159,34 @@ exports.updateBuyerData = async (req, res) => {
         res.json(resError)
     }
 }  
+
+
+
+exports.singleBuyerData = async (req, res) => {
+    try {
+        const buyer_id = req.params.buyer_id
+        let singleAddBuyer_mongo = await BuyerModel.findOne({ _id: buyer_id })
+
+        
+        if (singleAddBuyer_mongo) {
+            res.json({
+                status: "success",
+                message: "Find  Successfully",
+                singleBuyer: singleAddBuyer_mongo
+            })
+        }
+        else {
+            res.json({
+                status: "Fail",
+                message: "Not Found"
+            })
+        }
+    }
+    catch (error) {
+        res.json({
+            states: "Failed",
+            message: "Error"
+
+        })
+    }
+}
