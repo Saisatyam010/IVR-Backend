@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Collection = require('../config/Collection')
-require("../config/db")
+require("../config/Db")
 
 const userCallSchema = new mongoose.Schema({
         
