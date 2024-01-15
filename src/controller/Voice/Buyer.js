@@ -114,7 +114,7 @@ exports.deleteBuyerData = async (req, res) => {
 exports.updateBuyerData = async (req, res) => {
     try {
         const data = req.body;
-       
+       console.log(data);
         const buyer_id = req.params.buyer_id
         const update_data = {
             campaign_name: data.campaign_name,
