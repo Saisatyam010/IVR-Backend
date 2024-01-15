@@ -21,8 +21,8 @@ const { getCallRecordings, getAllCallRecordings } = require('../controller/CallR
 
 ivrRoute.post('/addbuyer', addBuyer)
 ivrRoute.get('/getAllBuyerDetail', getAllBuyer)
-ivrRoute.get('/deleteBuyerData/:buyer_id', deleteBuyerData)
-ivrRoute.get('/updateBuyerData/:buyer_id', updateBuyerData)
+ivrRoute.delete('/deleteBuyerData/:buyer_id', deleteBuyerData)
+ivrRoute.put('/updateBuyerData/:buyer_id', updateBuyerData)
 
 require('dotenv').config()
 
