@@ -5,7 +5,7 @@ const ivrRoute = express.Router()
 
 const { callSenator, fallBackNumber, goodBye, callStatus, incomingCall, handleForwardCall } = require('../controller/Voice/CallForwarding');
 const { liveCallData } = require('../controller/Voice/Livecall');
-const { addBuyer, getAllBuyer } = require('../controller/Voice/Buyer');
+const { addBuyer, getAllBuyer, deleteBuyerData, updateBuyerData } = require('../controller/Voice/Buyer');
 const { getCallHistory } = require('../controller/Voice/CallHistory');
 const { addBlockNumber, getBlockNumber, deleteBlockNumber } = require('../controller/BlockCall');
 const { callVoise, callWisper } = require('../controller/Voice/CallBearging');
@@ -21,6 +21,8 @@ const { getCallRecordings, getAllCallRecordings } = require('../controller/CallR
 
 ivrRoute.post('/addbuyer', addBuyer)
 ivrRoute.get('/getAllBuyerDetail', getAllBuyer)
+ivrRoute.get('/deleteBuyerData/:buyer_id', deleteBuyerData)
+ivrRoute.get('/updateBuyerData/:buyer_id', updateBuyerData)
 
 require('dotenv').config()
 

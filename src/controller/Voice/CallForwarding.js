@@ -1,20 +1,34 @@
 const twilio = require("twilio");
 const BuyerModel = require("../../model/Add_Buyer_model");
-
+const UserCallDataModel = require("../../model/Usercalldata");
+require("dotenv").config();
+const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.authToken ;
+const client = twilio(TWILIO_ACCOUNT_SID, authToken);
 
 let forwardCallers=[]
 exports.incomingCall = async (req, res) => {
+  // console.log(JSON.stringify(req.body)+"phone number");
   const twiml = new twilio.twiml.VoiceResponse();
-  // twiml.dial().conference('MyConference', {
-  //   startConferenceOnEnter: true,
-  //   endConferenceOnExit: true,
-  // });
-  // const twimll = new VoiceResponse();
+
+
+
+  const addcallData = await UserCallDataModel.findOne({customer_number:req.body.From})
+console.log(addcallData+"addcallData");
+if(addcallData){
+  forwardCallers.push(addcallData.buyer_number)
+  twiml.dial({
+    action: '/auth/handle-forward-call',
+    method: 'POST',
+    record: 'record-from-answer',
+    timeout: 10
+  },addcallData.buyer_number)
+}else{
   const buyers = await BuyerModel.find({})
   // Retrieve forwardcaller priority and status from the database
   const forwardCaller = buyers.filter((caller) =>!forwardCallers.includes(caller)&&caller.buyer_status !== false)
     .sort((a, b) => a.priority - b.priority)[0];
-  console.log(forwardCaller + "fothfg");
+ 
   if (forwardCaller) {
     forwardCallers.push(forwardCaller.destination_number)
     twiml.dial({
@@ -29,16 +43,41 @@ exports.incomingCall = async (req, res) => {
     twiml.say('All executives are busy Please try again later');
     twiml.hangup();
   }
+
+}
+
+
+  // twiml.dial().conference('MyConference', {
+  //   startConferenceOnEnter: true,
+  //   endConferenceOnExit: true,
+  // });
+  // const twimll = new VoiceResponse();
+  
   //res.redirect('/auth/forward-and-join-conference');
   res.type('text/xml');
   res.send(twiml.toString());
 }
 exports.handleForwardCall = async (req, res) => {
-  console.log(forwardCallers);
+  // console.log(JSON.stringify(req.body), "body");
   const callStatus = req.body.DialCallStatus
-  console.log(callStatus, "callStatus");
+  // console.log(callStatus, "callStatus");
   const twiml = new twilio.twiml.VoiceResponse();
   if (callStatus == "completed") {
+
+
+    const call = await client.calls.list({limit: 1})
+ 
+      const addcallData = await UserCallDataModel.find({customer_number:call[0].from})
+      console.log(addcallData);
+
+      if(addcallData.length==0){
+      const addcallData = await UserCallDataModel.create({customer_number:call[0].from,buyer_number:call[0].to})
+       
+      }
+      else{
+        const addcallData = await UserCallDataModel.updateOne({customer_number:call[0].from},{buyer_number:call[0].to})
+      }
+      // console.log(call+"call");
 
     twiml.say('Thank you for calling');
     forwardCallers=[];
