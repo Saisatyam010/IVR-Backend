@@ -1,4 +1,7 @@
 require('dotenv').config();
+
+
+
 const TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID;
 const authToken = process.env.authToken ;
  
@@ -8,12 +11,15 @@ exports.getCallHistory=async (req, res) => {
        const startTime=req.query.startDate;
        const endTime=req.query.endDate;
        console.log(startTime,endTime+"startTime")
-      const calls = await client.calls.list({
+
+       const calls = await client.calls.list({
+
         // Add your filters here
         startTime: new Date(startTime),
         endTime: new Date(endTime),
       });
-      console.log(calls)
+
+      
       res.status(200).json({callHistory:calls});
     } catch (error) {
       console.error(error);
