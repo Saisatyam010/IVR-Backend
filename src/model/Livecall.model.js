@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Collection = require('../config/Collection')
-require('../../config/Db')
+require("../config/Db")
 
 const liveCallSchema = new mongoose.Schema({
     campaign:{type:String},

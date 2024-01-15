@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-mongoose.connect(`mongodb://127.0.0.1:27017/twirilo`,{
+mongoose.connect(`mongodb+srv://qurilo73:6bzuEu1Hqkcmpzt7@cluster0.xxvrf0r.mongodb.net/ivr-twilio?retryWrites=true&w=majority`,{
     useNewUrlParser:true,useUnifiedTopology:true 
 })
 
