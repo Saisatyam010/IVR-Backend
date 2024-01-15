@@ -3,7 +3,7 @@ const express = require('express');
 const ivrRoute = express.Router()
 
 
-const { welcomeCall, callSenator, fallBackNumber, goodBye, callStatus, incomingCall, handleForwardCall } = require('../controller/Voice/CallForwarding');
+const { callSenator, fallBackNumber, goodBye, callStatus, incomingCall, handleForwardCall } = require('../controller/Voice/CallForwarding');
 const { liveCallData } = require('../controller/Voice/Livecall');
 const { addBuyer, getAllBuyer } = require('../controller/Voice/Buyer');
 const { getCallHistory } = require('../controller/Voice/CallHistory');
