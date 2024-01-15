@@ -8,7 +8,7 @@ const { liveCallData } = require('../controller/Voice/Livecall');
 const { addBuyer, getAllBuyer, deleteBuyerData, updateBuyerData } = require('../controller/Voice/Buyer');
 const { getCallHistory } = require('../controller/Voice/CallHistory');
 const { addBlockNumber, getBlockNumber, deleteBlockNumber } = require('../controller/BlockCall');
-const { callVoise, callWisper } = require('../controller/Voice/CallBearging');
+// const { callVoise, callWisper } = require('../controller/Voice/CallBearging');
 const { getCallRecordings, getAllCallRecordings } = require('../controller/CallRecoding');
 // admin login
 
