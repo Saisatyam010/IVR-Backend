@@ -7,9 +7,9 @@ const { welcomeCall, callSenator, fallBackNumber, goodBye, callStatus, incomingC
 const { liveCallData } = require('../controller/Voice/Livecall');
 const { addBuyer, getAllBuyer } = require('../controller/Voice/Buyer');
 const { getCallHistory } = require('../controller/Voice/CallHistory');
-const { addBlockNumber, getBlockNumber, deleteBlockNumber } = require('../controller/blockCall');
+const { addBlockNumber, getBlockNumber, deleteBlockNumber } = require('../controller/BlockCall');
 const { callVoise, callWisper } = require('../controller/Voice/CallBearging');
-const { getCallRecordings, getAllCallRecordings } = require('../controller/callRecoding');
+const { getCallRecordings, getAllCallRecordings } = require('../controller/CallRecoding');
 // admin login
 
 // ivrRoute.post('/login', adminLogin)
