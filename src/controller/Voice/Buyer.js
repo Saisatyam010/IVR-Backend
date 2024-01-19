@@ -86,7 +86,7 @@ exports.deleteBuyerData = async (req, res) => {
         const numberDelete = await UserCallDataModel.deleteMany({ buyer_number: delete_mongo.destination_number })
 
 
-        if (delete_mongo.deletedCount > 0) {
+        if (delete_mongo) {
            
             res.json({
                 status: "success",
