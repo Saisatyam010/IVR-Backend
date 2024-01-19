@@ -9,16 +9,14 @@ const buyerSchema = new mongoose.Schema({
     campaign_name:{type:String},
     buyer_name:{type:String},
     destination_number:{type:String},
-    distribution_weightage:{type:Number},
-    ring_timeout:{type:String},
+    distribution_weightage:{type:Number}, 
+     ring_timeout:{type:String},
     call_control_strategy:{type:String},
     live_call_limit:{type:String},
     daily_call_limit:{type:String},
     monthly_call_limit:{type:String},
-    buyer_status:{type:Boolean},
-    active_hours:{type:String},
+    buyer_status:{type:Boolean}, 
     priority:{type:Number},
-    time_Taken:{type:Number},
 
 })
 

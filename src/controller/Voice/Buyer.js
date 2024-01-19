@@ -1,4 +1,5 @@
 const BuyerModel = require("../../model/Add_Buyer_model");
+const UserCallDataModel = require("../../model/Usercalldata");
 
 exports.addBuyer = async (req, res) => {
     try {
@@ -15,9 +16,7 @@ exports.addBuyer = async (req, res) => {
             daily_call_limit: data.daily_call_limit,
             monthly_call_limit: data.monthly_call_limit,
             buyer_status: data.buyer_status,
-            active_hours: data.active_hours,
-            priority:data.priority,
-            time_Taken:data.time_Taken,
+            priority:data.priority, 
             // userId:req.user._id
 
         }
@@ -82,11 +81,16 @@ exports.getAllBuyer = async (req, res) => {
 exports.deleteBuyerData = async (req, res) => {
     try {
         const buyer_id = req.params.buyer_id
-        const delete_mongo = await BuyerModel.deleteOne({ _id: buyer_id })
+        const delete_mongo = await BuyerModel.findByIdAndDelete({ _id: buyer_id }) 
+
+        const numberDelete = await UserCallDataModel.deleteMany({ buyer_number: delete_mongo.destination_number })
+
+
         if (delete_mongo.deletedCount > 0) {
+           
             res.json({
                 status: "success",
-                message: "Product Delete Succsssfully"
+                message: "Number Delete Succsssfully"
             })
         }
         else {
@@ -127,9 +131,8 @@ exports.updateBuyerData = async (req, res) => {
             daily_call_limit: data.daily_call_limit,
             monthly_call_limit: data.monthly_call_limit,
             buyer_status: data.buyer_status,
-            active_hours: data.active_hours,
             priority:data.priority,
-            time_Taken:data.time_Taken,
+           
         }
         const update_mongo = await BuyerModel.updateOne({ _id: buyer_id }, update_data)
         if (update_mongo) {
