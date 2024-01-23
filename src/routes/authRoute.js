@@ -10,10 +10,11 @@ const { getCallHistory } = require('../controller/Voice/CallHistory');
 const { addBlockNumber, getBlockNumber, deleteBlockNumber } = require('../controller/BlockCall');
 // const { callVoise, callWisper } = require('../controller/Voice/CallBearging');
 const { getCallRecordings, getAllCallRecordings } = require('../controller/CallRecoding');
+const { adminLogin, adminSignup } = require('../controller/Auth/Login');
 // admin login
 
-// ivrRoute.post('/login', adminLogin)
-// ivrRoute.post('/signup', adminSignup)
+ivrRoute.post('/login', adminLogin)
+ivrRoute.post('/signup', adminSignup)
 // ivrRoute.post('/callblock',blockCall)
 
 // all buyer
