@@ -66,7 +66,7 @@ exports.adminLogin = async (req, res) => {
         }
         const token = twt.sign(bindData, JWT_SECRET_KEY, { expiresIn: '30d' })
         res.json({
-          status: "sucess",
+          status: "success",
           message: "login sucessfully",
           token:token
         })
