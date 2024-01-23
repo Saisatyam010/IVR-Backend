@@ -61,8 +61,7 @@ exports.adminLogin = async (req, res) => {
     
       if (ress) {
         const bindData = {
-          userId: "876687687678876",
-          phoneNumber: "89879879897"
+          userId: ress._id, 
         }
         const token = twt.sign(bindData, JWT_SECRET_KEY, { expiresIn: '30d' })
         res.json({
