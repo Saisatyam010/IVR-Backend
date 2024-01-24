@@ -21,7 +21,7 @@ exports.incomingCall = async (req, res) => {
       action: '/auth/handle-forward-call',
       method: 'POST',
       record: 'record-from-answer',
-      timeout: 10
+      timeout: addcallData.ring_timeout
     }, addcallData.buyer_number)
   } else {
     const buyers = await BuyerModel.find({})
@@ -35,7 +35,7 @@ exports.incomingCall = async (req, res) => {
         action: '/auth/handle-forward-call',
         method: 'POST',
         record: 'record-from-answer',
-        timeout: 10
+        timeout: forwardCaller.ring_timeout
       }, forwardCaller.destination_number)
 
     }
