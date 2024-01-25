@@ -33,8 +33,8 @@ ivrRoute.get('/live-calls', liveCallData)
 // call forverding 
 
 ivrRoute.post('/incoming-call', incomingCall);
-ivrRoute.post('/handle-forward-call', handleForwardCall);
-ivrRoute.get('/handle-forward-call', handleForwardCall);
+ivrRoute.post('/handle-forward-call/:number', handleForwardCall);
+ivrRoute.get('/handle-forward-call/:number', handleForwardCall);
 
 ivrRoute.post('/call-status', callStatus);
 
