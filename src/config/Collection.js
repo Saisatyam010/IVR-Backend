@@ -5,6 +5,7 @@ const Collection = {
     live_call:"Live_call",
     block:"Block_user",
     callData:"Call_data",
+    wallet:"Wallet",
 
 }
 

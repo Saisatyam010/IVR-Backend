@@ -3,7 +3,7 @@ const express = require('express');
 const ivrRoute = express.Router()
 
 
-const { callSenator, fallBackNumber, goodBye, callStatus, incomingCall, handleForwardCall } = require('../controller/Voice/CallForwarding');
+const {  goodBye, callStatus, incomingCall, handleForwardCall } = require('../controller/Voice/CallForwarding');
 const { liveCallData } = require('../controller/Voice/Livecall');
 const { addBuyer, getAllBuyer, deleteBuyerData, updateBuyerData, singleBuyerData } = require('../controller/Voice/Buyer');
 const { getCallHistory } = require('../controller/Voice/CallHistory');
@@ -35,9 +35,7 @@ ivrRoute.get('/live-calls', liveCallData)
 ivrRoute.post('/incoming-call', incomingCall);
 ivrRoute.post('/handle-forward-call', handleForwardCall);
 ivrRoute.get('/handle-forward-call', handleForwardCall);
-ivrRoute.get('/call-senators', callSenator);
-ivrRoute.post('/call-senators', callSenator);
-ivrRoute.post('/fallback-number', fallBackNumber);
+
 ivrRoute.post('/call-status', callStatus);
 
 // block calls
